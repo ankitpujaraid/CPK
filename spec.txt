@@ -1,0 +1,16 @@
+@echo off
+echo Retrieving system identifiers...
+
+echo System UUID:
+wmic csproduct get UUID
+
+echo BIOS Serial Number:
+wmic bios get serialnumber
+
+echo Motherboard Serial Number:
+wmic baseboard get serialnumber
+
+echo Windows Product ID:
+wmic os get serialnumber
+
+pause
