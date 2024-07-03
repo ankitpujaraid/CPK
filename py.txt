@@ -1,0 +1,21 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: Define the name to be removed and the text to be added
+set "name_to_remove=sample"
+set "text_to_add=_new"
+
+:: Iterate over files in the current directory
+for %%f in (*%name_to_remove%*) do (
+    set "filename=%%f"
+    :: Remove the name
+    set "newname=!filename:%name_to_remove%=!"
+    :: Add text to the end before the file extension
+    set "basename=!newname:~0,-4!"
+    set "extension=!newname:~-4!"
+    set "newname=!basename!!text_to_add!!extension!"
+    :: Rename the file
+    ren "%%f" "!newname!"
+)
+
+echo Finished renaming files.
