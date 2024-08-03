@@ -1,0 +1,16 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: Define the text to add at the beginning and end
+set "prefix=START_"
+set "suffix=_END"
+
+:: Loop through all files in the directory
+for %%f in (*.*) do (
+    set "filename=%%~nf"
+    set "extension=%%~xf"
+    ren "%%f" "!prefix!!filename!!suffix!!extension!"
+)
+
+echo All filenames have been updated.
+pause
